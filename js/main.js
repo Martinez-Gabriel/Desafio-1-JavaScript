@@ -32,11 +32,13 @@ let total = 0;
 do{
     precioProducto = prompt ('Ingrese precio del producto o FIN para terminar: ');
     const precioProductoParseado = parseFloat(precioProducto);
-    if (precioProductoParseado){
+     if (precioProductoParseado && precioProductoParseado > 0) {
         contador= contador + 1;
         total= total + calcularIva(precioProductoParseado);
         alert('Precio con IVA: '+calcularIva(precioProductoParseado));
         alert('Cantidad de Productos: '+ contador);
+    } else if (precioProductoParseado != "FIN" && precioProductoParseado <=0){
+        alert ('ATENCION!!! Ingrese un valor Valido!');
     }
 }while (precioProducto !='FIN');
 alert ('Precio total a pagar es de: $'+ total);
@@ -46,13 +48,13 @@ if (respuesta != 'N') {
     respuesta = prompt ('Ingrese la cantidad de cuotas que desea: 3, 6 o 12')
     switch (respuesta) {
         case "3":
-            alert (calcularTresCuotas(total));
+            calcularTresCuotas(total);
             break;
         case "6":
-            alert(calcularSeisCuotas(total));
+            calcularSeisCuotas(total);
             break;
         case "12":
-            alert(calcularDoceCuotas(total));
+            calcularDoceCuotas(total);
             break;
     }
 }else {
